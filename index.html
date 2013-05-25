@@ -17,6 +17,7 @@
       <li>Child Moved</li>
     </ol>
     
+    <div id='messagesDiv'></div>
     <input type='text' id='nameInput' placeholder='Name'>
     <input type='text' id='messageInput' placeholder='Message'>
     <script>
@@ -32,8 +33,14 @@
       
       // read data using callbacks
       chatDataRef.on('child_added', function(snapshot) {
-        //We'll fill this in later.
+        var message = snapshot.val();
+        displayChatMessage(message.name, message.text);
       });
+      
+      function displayChatMessage(name, text) {
+        $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
+        $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
+      };
     </script>
   </body>
 </html>
