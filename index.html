@@ -5,20 +5,34 @@
     <title>let's try and error</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src='https://cdn.firebase.com/v0/firebase.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
   </head>
   <body>
-    1. Firebase Chat
+    <h3>Firebase Chat</h3>
+    <ol>
+      <li>Value</li>
+      <li>Child Added</li>
+      <li>Child Changed</li>
+      <li>Child Removed</li>
+      <li>Child Moved</li>
+    </ol>
+    
     <input type='text' id='nameInput' placeholder='Name'>
     <input type='text' id='messageInput' placeholder='Message'>
     <script>
-      var myDataRef = new Firebase('https://tssla168auy.firebaseio-demo.com/');
+      var chatDataRef = new Firebase('https://tssla168auy.firebaseio-demo.com/');
       $('#messageInput').keypress(function (e) {
         if (e.keyCode == 13) {
           var name = $('#nameInput').val();
           var text = $('#messageInput').val();
-          myDataRef.set({name: name, text: text});
+          chatDataRef.push({name: name, text: text});
           $('#messageInput').val('');
         }
+      });
+      
+      // read data using callbacks
+      chatDataRef.on('child_added', function(snapshot) {
+        //We'll fill this in later.
       });
     </script>
   </body>
