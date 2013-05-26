@@ -36,7 +36,7 @@ teams['kkuo'] = [
 jQuery(document).ready(function($) {
   // Stuff to do as soon as the DOM is ready;
   var bugzilla = bz.createClient();
-  $('#tef_zone').bind('touchstart click', function(event) {
+  $('#tef_cnt').bind('touchstart click', function(event) {
     event.stopPropagation();
     event.preventDefault();
     if (event.handled !== true) {
@@ -46,7 +46,7 @@ jQuery(document).ready(function($) {
       return false;
     }
   });
-  $('#leo_zone').bind('touchstart click', function(event) {
+  $('#leo_cnt').bind('touchstart click', function(event) {
     event.stopPropagation();
     event.preventDefault();
     if (event.handled !== true) {
